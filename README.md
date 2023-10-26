@@ -88,6 +88,8 @@ The purpose of this query is to get the number of stars featured in each movie f
 
     select Stars, replace(replace(replace(stars,'[',''),']',''),'''','') as final from data
 
+![](4.png)
+
 **THEN UPDATE THE STAR COLUMN**
 
     update [data]
@@ -98,21 +100,24 @@ The purpose of this query is to get the number of stars featured in each movie f
     select stars, len(stars)-len (replace(replace(replace(replace(stars,'[',''),']',''),'''',''),',',''))+1 as count from data
 
   
-
-  -- Remove null values in metascore and gross column
+**REMOVE NULL VALUES IN METASCORE AND GROSS COLUMN**
 
     delete from [data]
     where metascore is null or gross is null;
 
-  --Round up value in Gross column
+**ROUND UP VALUES IN GROSS COLUMN**
 
     select gross, round(gross,1) from data;
+
+![](5.png)
   
     update [data]
     set gross= round(gross,1) from data;
 
 
   -- Add rating to null values in certification column based on similar rated genre from genre column
+
+  ![](6.0png)
 
     select distinct (genre),certification, count(genre) as occurence from [data]
     group by genre, certification;
@@ -149,6 +154,8 @@ The purpose of this query is to get the number of stars featured in each movie f
     where genre like 'Animation,  Action,  Drama' or 
     genre like'Drama,  Sports,  Thriller' or genre like 'Comedy,  Drama'
     or genre like 'Comedy,  Music' or genre like 'Drama'
+
+![](7.0.png)
 
   --where genre like 'horror';
 
