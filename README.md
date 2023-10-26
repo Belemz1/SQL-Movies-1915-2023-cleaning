@@ -1,5 +1,28 @@
 # SQL-Movies-1915-2023-cleaning
 
+## INTRODUCTION
+
+The purpose of this task is to use SQL to clean up movie data set of (1915 - 2023).The downloaded data needs to be imported into the microsoft sql data base before cleaning will start. The tools used in this cleaning are Microsoft SQL Studio and Azure data studio. Although each can be used independently to clean the data, but Azure data studio was also used due to some capabilities it has which MSSQL doesn'nt have.
+
+The purpose of the cleaning are as follows
+
+- Check for completeness ( data fields with values)
+- Check for uniqueness (records that are duplicated)
+- Check for consistency ( values free from contradiction)
+- Check for accuracy (correct values)
+- Check for Relevance
+- Check for Uniqueness ( records that are duplicated )
+
+
+## METHOD AND PROCEDURE
+
+To clean up this data, first we needed to create a database called **PORTFOLIO**, then imported the data to Microsoft SQL data base. The imported data can be worked on directly also in Azure data studio for Window users, or it can also be imported in Azure data studio for MAC users.
+The data seem to have the following errors
+- The use of square brackets and quatation in the description, stars, genre and directors column
+- Null values in metascore and gross column
+- Null values in certification column that needs updating
+- Rounding up values in gross column
+
     SELECT TOP (1000) [column1]
       ,[Movie_Name]
       ,[Year_of_Release]
