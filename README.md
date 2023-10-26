@@ -16,12 +16,10 @@ The purpose of the cleaning are as follows
 
 ## METHOD AND PROCEDURE
 
-To clean up this data, first we needed to create a database called **PORTFOLIO**, then imported the data to Microsoft SQL data base. The imported data can be worked on directly also in Azure data studio for Window users, or it can also be imported in Azure data studio for MAC users.
-The data seem to have the following errors
-- The use of square brackets and quatation in the description, stars, genre and directors column
-- Null values in metascore and gross column
-- Null values in certification column that needs updating
-- Rounding up values in gross column
+To clean up this data, first we needed to create a database called **PORTFOLIO**, then imported the data into the portfolio using Microsoft SQL server. The imported data can be worked on directly also in Azure data studio for Window users, or it can also be imported in Azure data studio for MAC users.
+
+After running this SQL query to retrieve all the column data
+
 
     SELECT TOP (1000) [column1]
       ,[Movie_Name]
@@ -38,43 +36,19 @@ The data seem to have the following errors
       ,[Description]
     FROM [Portfolio].[dbo].[data]
 
-
-    select * from [data];
-
-    select Movie_Rating, round (Movie_Rating, 1) from [data];
+![](1.1.png)
 
 
-    select stars, len(stars)from [data];
+The data seem to have the following errors
+- The use of square brackets and quatation in the description, stars, genre and directors column
+- Null values in metascore and gross column
+- Null values in certification column that needs updating
+- Rounding up values in gross column
 
-    select Movie_Name, len(Movie_Name)from [data];
-
-    select Movie_Name, len(Movie_Name)-len(replace(Movie_Name, ' ',''))+1 from [data];
-
-    select genre, len(genre)-len (replace(replace(genre, ' ,',''),',',''))+1 from [data];
-
-    select * from data;
-
-
-    select Genre, len(Genre)from [data];
-
-
-
-    SELECT PARSENAME(Replace(Genre, '[', ''),1) from data;
-
-    select genre from data;   
-
-
-
-     select genre, replace(replace(replace(replace(genre,'[',''),']',''),'''',''),',','') as final from data
-
-
-    select genre, len(genre)-len (replace(replace(replace(replace(genre,'[',''),']',''),'''',''),',',''))+1 as final from data
-
-    select Stars, replace(replace(replace(stars,'[',''),']',''),'''','') as final from data
+**Drop Description column**
+We will be dropping the description column because it will not be relevant in further analysis
 
   
-
-  --Drop column1 and Description column
   alter table data drop column description;
   select * from data;
   
