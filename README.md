@@ -117,16 +117,15 @@ The purpose of this query is to get the number of stars featured in each movie f
 
 **ADD RATINGS TO NULL VALUES IN CERTIFICATION COLUMN BASED ON SIMILAR RATED GENRE FROM GENRE COLUMN**
 
-  ![](6.0.png)
+First we run a query to return the **NULL** Values
 
     select distinct (genre),certification, count(genre) as occurence from [data]
     group by genre, certification;
 
-    select genre, certification from data where certification is null;
+![](6.0.png)
 
-  
-    select certification, isnull(certification,'R') from [data]
 
+**THEN WE REUN A QUERY TO REPLACE THE NULL VALUES**
 
     select genre,certification, isnull(certification,'R') from data WHERE genre 
     like 'Crime,  Drama,  Romance' or genre like 'Drama,  Romance'or genre 
