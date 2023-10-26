@@ -45,42 +45,55 @@ The data seem to have the following errors
 - Null values in certification column that needs updating
 - Rounding up values in gross column
 
-**Drop Description column**
+**DROP DESCRIPTION COLUMN**
+
 We will be dropping the description column because it will not be relevant in further analysis
 
+![](1.0.png)
+
+This SQL query drops the **DESCRIPTION** column
+
   
-  alter table data drop column description;
-  select * from data;
+    alter table data drop column description;
+    select * from data;
   
-  -- Remove brackets and quotation on descriptions in Genre column
+  **REMOVE BRACKETS AND QUOTATION ON DESCRIPTION IN GENRE COLUMN**
 
     select genre, replace(replace(replace(genre,'[',''),']',''),'''','') as GENRE from data;
+
+![](3.1.png)
 
 --Update genre column with the corrected description
 
     update [data]
     set genre=replace(replace(replace(genre,'[',''),']',''),'''','')  from data;
 
-    select * from [data];
 
-  -- Remove brackets and quotation from directors column
+  **REMOVE BRACKETS AND QUOTATION FROM DIRECTORS COLUMN**
+
+  This query removes brackets and quotation from Directors column
 
     select director, replace(replace(replace(director,'[',''),']',''),'''','') as DIRECTOR from data;
+
+![](2.1.1.png)
 
 --Update directors column with correct description
 
     update [data]
     set director=replace(replace(replace(director,'[',''),']',''),'''','') from data;
 
-  --To get a count of stars from stars name in stars column
+**To GET COUNT OF STARS FROM STARS NAME IN STARS COLUMN**
+
+The purpose of this query is to get the number of stars featured in each movie from the name description in the star column. This number is relevant to analysis, than the names.First you run a query to get rid of brackets and quatation in the star column
 
     select Stars, replace(replace(replace(stars,'[',''),']',''),'''','') as final from data
 
-  --Then update stars column
+**THEN UPDATE THE STAR COLUMN**
+
     update [data]
     set stars= replace(replace(replace(stars,'[',''),']',''),'''','')  from data
 
-  --Get count
+**THEN GET COUNT OF STARS**
 
     select stars, len(stars)-len (replace(replace(replace(replace(stars,'[',''),']',''),'''',''),',',''))+1 as count from data
 
