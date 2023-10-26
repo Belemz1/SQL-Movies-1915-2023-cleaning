@@ -57,7 +57,7 @@ This SQL query drops the **DESCRIPTION** column
     alter table data drop column description;
     select * from data;
   
-  **REMOVE BRACKETS AND QUOTATION ON DESCRIPTION IN GENRE COLUMN**
+**REMOVE BRACKETS AND QUOTATION ON DESCRIPTION IN GENRE COLUMN**
 
     select genre, replace(replace(replace(genre,'[',''),']',''),'''','') as GENRE from data;
 
@@ -69,7 +69,7 @@ This SQL query drops the **DESCRIPTION** column
     set genre=replace(replace(replace(genre,'[',''),']',''),'''','')  from data;
 
 
-  **REMOVE BRACKETS AND QUOTATION FROM DIRECTORS COLUMN**
+**REMOVE BRACKETS AND QUOTATION FROM DIRECTORS COLUMN**
 
   This query removes brackets and quotation from Directors column
 
@@ -82,7 +82,7 @@ This SQL query drops the **DESCRIPTION** column
     update [data]
     set director=replace(replace(replace(director,'[',''),']',''),'''','') from data;
 
-**To GET COUNT OF STARS FROM STARS NAME IN STARS COLUMN**
+**TO GET COUNT OF STARS FROM STARS NAME IN STARS COLUMN**
 
 The purpose of this query is to get the number of stars featured in each movie from the name description in the star column. This number is relevant to analysis, than the names.First you run a query to get rid of brackets and quatation in the star column
 
@@ -117,7 +117,7 @@ The purpose of this query is to get the number of stars featured in each movie f
 
 **ADD RATINGS TO NULL VALUES IN CERTIFICATION COLUMN BASED ON SIMILAR RATED GENRE FROM GENRE COLUMN**
 
-  ![](6.0png)
+  ![](6.0.png)
 
     select distinct (genre),certification, count(genre) as occurence from [data]
     group by genre, certification;
@@ -134,7 +134,7 @@ The purpose of this query is to get the number of stars featured in each movie f
     or genre like 'Drama,  Mystery' or genre like 'Drama,  History,  Thriller'
     or genre like 'Drama  Sports,  Thriller' or genre like 'Comedy,  Drama,  Romance';
 
---Update certification column
+**UPDATE CERTIFICATION COLUMN**
 
     update [data]
     set certification= isnull(certification,'R') from data WHERE genre 
@@ -157,5 +157,5 @@ The purpose of this query is to get the number of stars featured in each movie f
 
 ![](7.0.png)
 
-  --where genre like 'horror';
+
 
