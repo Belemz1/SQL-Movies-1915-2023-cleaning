@@ -63,7 +63,7 @@ This SQL query drops the **DESCRIPTION** column
 
 ![](3.1.png)
 
---Update genre column with the corrected description
+**UPDATE GENRE COLUMN WITH THE CORRECT DESCRIPTION**
 
     update [data]
     set genre=replace(replace(replace(genre,'[',''),']',''),'''','')  from data;
@@ -77,7 +77,7 @@ This SQL query drops the **DESCRIPTION** column
 
 ![](2.1.1.png)
 
---Update directors column with correct description
+**UPDATE DIRECTORS COLUMN WITH CORRECT DESCRIPTION**
 
     update [data]
     set director=replace(replace(replace(director,'[',''),']',''),'''','') from data;
@@ -97,7 +97,8 @@ The purpose of this query is to get the number of stars featured in each movie f
 
 **THEN GET COUNT OF STARS**
 
-    select stars, len(stars)-len (replace(replace(replace(replace(stars,'[',''),']',''),'''',''),',',''))+1 as count from data
+    select stars, len(stars)-len (replace(replace(replace(replace(stars,'[',''),']',''),'''',''),',',''))+1 
+    as count from data
 
   
 **REMOVE NULL VALUES IN METASCORE AND GROSS COLUMN**
@@ -155,6 +156,9 @@ First we run a query to return the **NULL** Values
     or genre like 'Comedy,  Music' or genre like 'Drama'
 
 ![](7.0.png)
+
+## CONCLUSION
+In cleaning the movie set data, string functions like **ISNULL**, **REPLACE** AND **LEN** functions were used to remove brackets and quotation, replace null values and also get count of strings. Using Azure data studio, i was able to export the result of my query as CSV directly from the *RESULT* console.
 
 
 
