@@ -115,7 +115,7 @@ The purpose of this query is to get the number of stars featured in each movie f
     set gross= round(gross,1) from data;
 
 
-  -- Add rating to null values in certification column based on similar rated genre from genre column
+**ADD RATINGS TO NULL VALUES IN CERTIFICATION COLUMN BASED ON SIMILAR RATED GENRE FROM GENRE COLUMN**
 
   ![](6.0png)
 
