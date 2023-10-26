@@ -158,7 +158,7 @@ First we run a query to return the **NULL** Values
 ![](7.0.png)
 
 ## CONCLUSION
-In cleaning the movie set data, string functions like **ISNULL**, **REPLACE** AND **LEN** functions were used to remove brackets and quotation, replace null values and also get count of strings. Using Azure data studio, i was able to export the result of my query as CSV directly from the *RESULT* console.
+In cleaning the movie set data, string functions like **ISNULL**, **REPLACE** AND **LEN** functions were used to remove brackets and quotation, replace null values and also get count of strings. Using Azure data studio, i was able to export the result of my query as CSV directly from the *RESULT* console. The end result of the data cleaning, returned 6,480 rows of complete, unique, consistent, relevant and accurate data set for further analysis in Power BI.
 
 
 
