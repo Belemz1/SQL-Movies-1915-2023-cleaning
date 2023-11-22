@@ -51,7 +51,7 @@ We will be dropping the description column because it will not be relevant in fu
 
 ![](1.0.png)
 
-This SQL query drops the **DESCRIPTION** column
+This SQL query drops the **DESCRIPTION** column. Find file ![Here](SQLQuery_6.sql)
 
   
     alter table data drop column description;
